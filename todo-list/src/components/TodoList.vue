@@ -5,7 +5,7 @@
       <div class="title">오늘 할 일</div>
       <div class="list">
         <div class="todo" v-for="todo in todos" v-bind:key="todo.key">
-          <input type="checkbox" class="check" v-on:click="erase">
+          <input type="checkbox" class="check" v-on:click="erase(todo.todo_id)">
           <p class="content">{{ todo.content }}</p>
           <p class="place" >장소: {{ todo.place }}</p>
           <p class="date" >기간: {{ todo.period}} 까지</p>
@@ -56,12 +56,11 @@ export default {
       })
     },
   writing: function () {
-    console.log(1)
     this.$http.post('/', JSON.stringify({'content': this.content, 'place': this.place, 'period': this.date}), {
       headers: {
         'Content-Type': 'application/json'
       }
-    }).then(function (result) {
+    }).then((result) => {
       console.log(result.data)
       this.$http.get('/').then((result) => {
         this.todos = result.data
