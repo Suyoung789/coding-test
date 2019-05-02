@@ -64,6 +64,9 @@ export default {
       console.log(result.data)
       this.$http.get('/').then((result) => {
         this.todos = result.data
+        this.content = ''
+        this.place = ''
+        this.date = ''
       })
     })
   }
@@ -123,9 +126,13 @@ export default {
   padding: 3px;
   color: #3E3D3D;
 }
+.content {
+  width: 8vw;
+}
 .place {
+  width: 8vw;;
   position: relative;
-  left: 40%;
+  left: 10%;
   font-size: 15px;
 }
 .check {
@@ -135,7 +142,7 @@ export default {
 }
 .date {
   position: relative;
-  left: 50%;
+  left: 20%;
   font-size: 15px;
 }
 .add {
